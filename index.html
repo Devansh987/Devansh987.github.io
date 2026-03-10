@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Devansh Tomar | Backend Developer</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
     
     <style>
         /* --- CORE SETTINGS --- */
@@ -14,7 +14,7 @@
             --bg-card: #0a0a0a;
             --text-main: #ffffff;
             --text-muted: #a0a0a0;
-            --accent: #00f3ff; /* Cyber Cyan */
+            --accent: #00f3ff;
             --accent-glow: rgba(0, 243, 255, 0.15);
             --font-main: 'Space Grotesk', sans-serif;
             --font-code: 'JetBrains Mono', monospace;
@@ -64,6 +64,7 @@
 
         /* --- HERO --- */
         #hero { display: flex; align-items: center; min-height: 100vh; }
+        .hero-content { flex: 1; }
         .hero-pre { color: var(--accent); font-family: var(--font-code); margin-bottom: 20px; }
         .hero-name { font-size: clamp(40px, 8vw, 80px); line-height: 1.1; margin-bottom: 10px; }
         .hero-role { font-size: clamp(30px, 5vw, 60px); color: var(--text-muted); margin-bottom: 30px; }
@@ -90,6 +91,33 @@
         .timeline-content h3 { font-size: 1.3rem; margin-bottom: 10px; }
         .timeline-content p { color: var(--text-muted); line-height: 1.6; }
 
+        /* --- EDUCATION (NO BOXES) --- */
+        .edu-showcase {
+            max-width: 800px; margin: 0 auto; position: relative;
+            padding: 20px 0;
+        }
+        .edu-header-flex {
+            display: flex; justify-content: space-between; align-items: flex-end;
+            border-bottom: 1px solid #222; padding-bottom: 30px;
+            transition: border-color 0.4s ease;
+        }
+        .edu-showcase:hover .edu-header-flex { border-color: rgba(0, 243, 255, 0.4); }
+        .edu-degree { font-size: 2rem; color: var(--text-main); font-weight: 700; margin-bottom: 10px; line-height: 1.2; }
+        .edu-uni { color: var(--text-muted); font-size: 1.1rem; }
+        .edu-uni i { color: var(--accent); margin-right: 8px; }
+        
+        .cgpa-display { text-align: right; }
+        .cgpa-label { 
+            color: var(--text-muted); font-family: var(--font-code); font-size: 0.85rem; 
+            text-transform: uppercase; letter-spacing: 2px; display: block; margin-bottom: 5px; 
+        }
+        .cgpa-number { 
+            font-family: var(--font-code); font-size: 2.5rem; color: var(--accent); 
+            font-weight: 700; line-height: 1; text-shadow: 0 0 15px var(--accent-glow); 
+            transition: 0.3s ease;
+        }
+        .edu-showcase:hover .cgpa-number { text-shadow: 0 0 25px rgba(0, 243, 255, 0.4); transform: scale(1.05); }
+
         /* --- SKILLS GRID --- */
         .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
         .skill-card {
@@ -110,8 +138,7 @@
         .project-card {
             background: var(--bg-card); padding: 30px; border-radius: 8px;
             border: 1px solid #222; transition: 0.3s; height: 100%;
-            display: flex; flex-direction: column;
-            text-decoration: none;
+            display: flex; flex-direction: column; text-decoration: none;
         }
         .project-card:hover { transform: translateY(-7px); border-color: var(--accent); }
         .project-header { display: flex; justify-content: space-between; align-items: start; margin-bottom: 20px; }
@@ -121,6 +148,40 @@
         .project-title { font-size: 1.4rem; margin-bottom: 10px; color: var(--text-main); }
         .project-desc { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 20px; line-height: 1.6; flex-grow: 1; }
         .tech-list { font-family: var(--font-code); font-size: 0.8rem; color: var(--text-muted); display: flex; gap: 15px; flex-wrap: wrap; }
+
+        /* --- CLASSY CERTIFICATES --- */
+        .cert-grid-classy { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .cert-card-classy {
+            position: relative; background: var(--bg-card); padding: 40px 30px;
+            border: 1px solid #1a1a1a; border-radius: 12px; text-decoration: none;
+            transition: 0.4s var(--ease); overflow: hidden; display: flex; flex-direction: column;
+            z-index: 1; cursor: none;
+        }
+        .cert-card-classy::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at top right, rgba(0, 243, 255, 0.08), transparent 60%);
+            z-index: -1; opacity: 0; transition: 0.5s ease;
+        }
+        .cert-card-classy:hover { border-color: #333; transform: translateY(-5px); box-shadow: 0 10px 30px -15px rgba(0, 243, 255, 0.1); }
+        .cert-card-classy:hover::before { opacity: 1; }
+        .cert-icon-wrapper {
+            width: 50px; height: 50px; border-radius: 8px; background: #111;
+            display: flex; justify-content: center; align-items: center;
+            border: 1px solid #222; margin-bottom: 25px; transition: 0.3s ease;
+        }
+        .cert-card-classy:hover .cert-icon-wrapper { border-color: var(--accent); }
+        .cert-icon { font-size: 1.5rem; color: var(--text-muted); transition: 0.3s ease; }
+        .cert-card-classy:hover .cert-icon { color: var(--accent); }
+        .cert-title { font-size: 1.25rem; color: var(--text-main); margin-bottom: 10px; font-weight: 600; line-height: 1.4; }
+        .cert-issuer { color: var(--accent); font-family: var(--font-code); font-size: 0.85rem; margin-bottom: 20px; }
+        .cert-meta {
+            font-size: 0.8rem; color: #777; font-family: var(--font-code);
+            display: flex; justify-content: space-between; align-items: center; margin-top: auto;
+            padding-top: 20px; border-top: 1px solid #1a1a1a; transition: 0.3s ease;
+        }
+        .cert-card-classy:hover .cert-meta { border-color: #333; }
+        .cert-link-icon { font-size: 1.1rem; opacity: 0; transform: translateX(-10px); transition: 0.3s ease; color: var(--accent); }
+        .cert-card-classy:hover .cert-link-icon { opacity: 1; transform: translateX(0); }
 
         /* --- RESUME SECTION --- */
         .resume-box {
@@ -149,17 +210,22 @@
         /* --- ANIMATION UTILS --- */
         .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s var(--ease); }
         .reveal.active { opacity: 1; transform: translateY(0); }
-        .delay-1 { transition-delay: 0.1s; } .delay-2 { transition-delay: 0.2s; }
+        .delay-1 { transition-delay: 0.1s; } 
+        .delay-2 { transition-delay: 0.2s; }
+        .delay-3 { transition-delay: 0.3s; }
 
         @media (max-width: 768px) {
             .nav-links { display: none; }
             .hero-name { font-size: 45px; }
             .section-title { font-size: 2rem; }
+            .edu-header-flex { flex-direction: column; align-items: flex-start; gap: 30px; }
+            .cgpa-display { text-align: left; }
+            .edu-degree { font-size: 1.5rem; }
+            .cgpa-number { font-size: 2rem; }
         }
     </style>
 </head>
 <body>
-
     <div class="cursor-dot"></div>
     <div class="cursor-outline"></div>
 
@@ -167,10 +233,12 @@
         <a href="#" class="logo">DT.</a>
         <ul class="nav-links">
             <li><a href="#journey"><span class="num">01.</span>My Journey</a></li>
-            <li><a href="#skills"><span class="num">02.</span>Skills</a></li>
-            <li><a href="#projects"><span class="num">03.</span>Work</a></li>
-            <li><a href="#resume"><span class="num">04.</span>Resume</a></li>
-            <li><a href="#hire"><span class="num">05.</span>Contact</a></li>
+            <li><a href="#education"><span class="num">02.</span>Education</a></li>
+            <li><a href="#skills"><span class="num">03.</span>Skills</a></li>
+            <li><a href="#projects"><span class="num">04.</span>Work</a></li>
+            <li><a href="#certificates"><span class="num">05.</span>Certificates</a></li>
+            <li><a href="#resume"><span class="num">06.</span>Resume</a></li>
+            <li><a href="#hire"><span class="num">07.</span>Contact</a></li>
         </ul>
     </nav>
 
@@ -218,9 +286,58 @@
         </div>
     </section>
 
+    <section id="education">
+        <div class="container">
+            <h2 class="section-title reveal"><span class="num">02.</span> Education</h2>
+            
+            <div class="edu-showcase reveal delay-1">
+                <div class="edu-header-flex">
+                    <div class="edu-info">
+                        <h3 class="edu-degree">B.Tech in Computer Science Engineering</h3>
+                        <p class="edu-uni"><i class="fas fa-university"></i> 3rd Year Undergraduate</p>
+                    </div>
+                    
+                    <div class="cgpa-display">
+                        <span class="cgpa-label">Current CGPA</span>
+                        <div class="cgpa-number">8.05</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="edu-showcase reveal delay-2" style="margin-top: 20px;">
+                <div class="edu-header-flex" style="padding-bottom: 20px;">
+                    <div class="edu-info">
+                        <h3 class="edu-degree" style="font-size: 1.6rem;">Senior Secondary School (Class XII)</h3>
+                        <p class="edu-uni"><i class="fas fa-school"></i> Your School Name Here</p>
+                    </div>
+                    
+                    <div class="cgpa-display">
+                        <span class="cgpa-label">Completed</span>
+                        <div class="cgpa-number" style="font-size: 1.8rem;">2023</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="edu-showcase reveal delay-3" style="margin-top: 20px;">
+                <div class="edu-header-flex" style="padding-bottom: 20px;">
+                    <div class="edu-info">
+                        <h3 class="edu-degree" style="font-size: 1.6rem;">Secondary School (Class X)</h3>
+                        <p class="edu-uni"><i class="fas fa-school"></i> Your School Name Here</p>
+                    </div>
+                    
+                    <div class="cgpa-display">
+                        <span class="cgpa-label">Completed</span>
+                        <div class="cgpa-number" style="font-size: 1.8rem;">2021</div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
     <section id="skills">
         <div class="container">
-            <h2 class="section-title reveal"><span class="num">02.</span> Technical Skills</h2>
+            <h2 class="section-title reveal"><span class="num">03.</span> Technical Skills</h2>
             <div class="skills-grid reveal delay-1">
                 <div class="skill-card">
                     <h3><i class="fas fa-code"></i> Languages</h3>
@@ -280,9 +397,8 @@
 
     <section id="projects">
         <div class="container">
-            <h2 class="section-title reveal"><span class="num">03.</span> Projects</h2>
+            <h2 class="section-title reveal"><span class="num">04.</span> Projects</h2>
             <div class="skills-grid reveal delay-1">
-                
                 <div class="project-card">
                     <div class="project-header">
                         <i class="far fa-folder folder-icon"></i>
@@ -330,6 +446,50 @@
                         <span>Microservices</span>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="certificates">
+        <div class="container">
+            <h2 class="section-title reveal"><span class="num">05.</span> Certifications</h2>
+            <div class="cert-grid-classy reveal delay-1">
+                
+                <a href="https://www.credly.com/badges/e7ddb197-8749-4aad-8f48-92c31c66be0b/linked_in_profile" target="_blank" class="cert-card-classy">
+                    <div class="cert-icon-wrapper">
+                        <i class="fas fa-chart-pie cert-icon"></i>
+                    </div>
+                    <h3 class="cert-title">SAP Certified - Data Analyst</h3>
+                    <div class="cert-issuer">SAP Analytics Cloud</div>
+                    <div class="cert-meta">
+                        <span>Feb 2026 - Mar 2027</span>
+                        <i class="fas fa-arrow-right cert-link-icon"></i>
+                    </div>
+                </a>
+
+                <a href="https://drive.google.com/file/d/1Caa1UT5asoc14FDGDwIC0aD9aNkHg3-B/view" target="_blank" class="cert-card-classy">
+                    <div class="cert-icon-wrapper">
+                        <i class="fas fa-award cert-icon"></i>
+                    </div>
+                    <h3 class="cert-title">Build Generative AI Apps and Solutions</h3>
+                    <div class="cert-issuer">Infosys Springboard</div>
+                    <div class="cert-meta">
+                        <span>Issued Aug 2025</span>
+                        <i class="fas fa-arrow-right cert-link-icon"></i>
+                    </div>
+                </a>
+
+                <a href="https://www.cipherschools.com/certificate/preview?id=687d3ebf3eaa79325b2d27c2" target="_blank" class="cert-card-classy">
+                    <div class="cert-icon-wrapper">
+                        <i class="fab fa-aws cert-icon"></i>
+                    </div>
+                    <h3 class="cert-title">Cloud Computing AWS</h3>
+                    <div class="cert-issuer">CipherSchools</div>
+                    <div class="cert-meta">
+                        <span>Issued Jul 2025</span>
+                        <i class="fas fa-arrow-right cert-link-icon"></i>
+                    </div>
+                </a>
 
             </div>
         </div>
@@ -337,11 +497,11 @@
 
     <section id="resume">
         <div class="container reveal">
-            <h2 class="section-title" style="justify-content: center; margin-bottom: 40px;"><span class="num">04.</span> Resume</h2>
+            <h2 class="section-title" style="justify-content: center; margin-bottom: 40px;"><span class="num">06.</span> Resume</h2>
             <div class="resume-box">
                 <h3 style="font-size: 1.8rem; margin-bottom: 15px;">Looking for the full history?</h3>
                 <p style="color: var(--text-muted); margin-bottom: 30px;">
-                    View my resume to see my full work history, education, and certification details.
+                    View my resume to see my full work history, education, and details.
                 </p>
                 <a href="https://drive.google.com/file/d/1yJ15-ECcLEEkMr4rYcLdeYW65o9NdMGY/view?usp=drive_link" target="_blank" class="btn-main">
                     <i class="fas fa-file-alt" style="margin-right: 10px;"></i> View Resume
@@ -352,25 +512,21 @@
 
     <section id="hire">
         <div class="container reveal">
-            <h2 class="section-title"><span class="num">05.</span> Hire Me</h2>
+            <h2 class="section-title"><span class="num">07.</span> Hire Me</h2>
             <div class="contact-form">
                 <form action="https://formspree.io/f/mvzzoyoy" method="POST">
-                    
                     <div class="form-group">
                         <label for="name" class="form-label">Your Name</label>
                         <input type="text" id="name" name="name" class="form-input" placeholder="John Doe" required>
                     </div>
-
                     <div class="form-group">
                         <label for="email" class="form-label">Your Email</label>
                         <input type="email" id="email" name="email" class="form-input" placeholder="john@example.com" required>
                     </div>
-
                     <div class="form-group">
                         <label for="message" class="form-label">Message</label>
                         <textarea id="message" name="message" class="form-textarea" placeholder="Hi Devansh, I'd like to discuss a project..." required></textarea>
                     </div>
-
                     <button type="submit" class="btn-main" style="width: 100%;">Send Message</button>
                 </form>
             </div>
@@ -426,5 +582,4 @@
         });
     </script>
 </body>
-
 </html>
